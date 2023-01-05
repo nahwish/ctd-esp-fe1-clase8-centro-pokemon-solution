@@ -16,19 +16,17 @@ const InputEspecie = ({ name, label }) => {
  * @returns {array} 
  */
   const getPokemonEspecies = async ({ queryKey }) => {
-		const [ key ,offset] = queryKey;
+  const [ key ,offset] = queryKey;
 	
-    const response = await fetch(
-			`https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=20`
-		);
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=20`);
       const data = await response.json();
       return data.results;
     };
 
     /**
-		 * Implementamos useQuery y le pasamos la función getPokemonEspecies que creamos arriba.
-		 * Esta función nos devuelve un array: data, que la renombramos como "especies"
-		 */
+    * Implementamos useQuery y le pasamos la función getPokemonEspecies que creamos arriba.
+    * Esta función nos devuelve un array: data, que la renombramos como "especies"
+    */
     const {data: especies} = useQuery(["especies",especiesOffset],getPokemonEspecies);
     
     const elegirEspecie = (e, nombreEspecie) => {
@@ -42,20 +40,20 @@ const InputEspecie = ({ name, label }) => {
   };
 
   const renderizarEspecies = () => (
-		<>
-			{especies && especies.map((especie) => (
-				<button
-					key={especie.name}
-					className="botones-especie"
-					onClick={(e) => elegirEspecie(e, especie.name)}
-				>
-					{especie.name}
-				</button>
-			))}
-		</>
-	);
+	<>
+	  {especies && especies.map((especie) => (
+	 <button
+	  key={especie.name}
+	  className="botones-especie"
+	  onClick={(e) => elegirEspecie(e, especie.name)}
+	>
+	  {especie.name}
+	</button>
+	))}
+       </>
+);
        
-  return (
+ return (
 		<div className="input-contenedor">
 			{mostrarPopup && (
 				<div className="popup-especie">
