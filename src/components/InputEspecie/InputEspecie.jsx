@@ -54,37 +54,37 @@ const InputEspecie = ({ name, label }) => {
 );
        
  return (
-		<div className="input-contenedor">
-			{mostrarPopup && (
-				<div className="popup-especie">
-					<h4>Seleccionar especie</h4>
-					<div className="contenedor-especies">{renderizarEspecies()}</div>
-					<div className="paginador">
-						<button
-							className="boton-anterior"
-							disabled={ (especiesOffset <= 0 ? true : false) }
-							onClick={() => setEspeciesOffset(especiesOffset - 20)}
-						>
-							Anterior
-						</button>
-						<button
-							className="boton-siguiente"
-							onClick={() => setEspeciesOffset(especiesOffset + 20)}
-						>
-							Siguiente
-						</button>
-					</div>
-				</div>
-			)}
-			<p htmlFor={name}>{label}</p>
-			<button
-				className="boton-seleccionar-especies"
-				onClick={() => setMostrarPopup(true)}
-			>
-				Seleccionar
-			</button>
+	<div className="input-contenedor">
+	  {mostrarPopup && (
+	    <div className="popup-especie">
+	      <h4>Seleccionar especie</h4>
+	      <div className="contenedor-especies">{renderizarEspecies()}</div>
+	      <div className="paginador">
+		<button
+		  className="boton-anterior"
+		  disabled={ (especiesOffset <= 0 ? true : false) }
+		  onClick={() => setEspeciesOffset(especiesOffset - 20)}
+		>
+		  Anterior
+		</button>
+		<button
+		  className="boton-siguiente"
+		  onClick={() => setEspeciesOffset(especiesOffset + 20)}
+		>
+		  Siguiente
+		</button>
 		</div>
-	);
+	    </div>
+	  )}
+	  <p htmlFor={name}>{label}</p>
+	  <button
+	    className="boton-seleccionar-especies"
+	    onClick={() => setMostrarPopup(true)}
+	  >
+	    Seleccionar
+	  </button>
+	</div>
+  );
 };
 
 export default InputEspecie;
